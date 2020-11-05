@@ -1,7 +1,5 @@
 $(document).ready(function() {
-
-    var currentDay = $("#currentDay");
-    // currentDay.text(moment().formate('LLLL'));
-    console.log(currentDay);
-
+    var today = moment().format('MMMM Do YYYY');
+    console.log(today);
 });
+
