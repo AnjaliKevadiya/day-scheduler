@@ -35,12 +35,24 @@ $(document).ready(function() {
             return;
         }
 
-        var newTask = {
-            'time': hour,
-            'description': inputValue
-        };  
-        allTasks.push(newTask);
+        //Fetch existing record if user already entered something for that time 
+        var taskExists = allTasks.find((t) => t.time === hour);
 
+        //if yes update the existing one
+        if(taskExists) {
+            taskExists.description = inputValue;
+        } 
+        //else add new task
+        else {
+            var newTask = {
+                'time': hour,
+                'description': inputValue
+            };  
+            //push new task to taskObject  
+            allTasks.push(newTask);
+        }
+
+        //push all the tasks to the local storage
         localStorage.setItem("taskObject", JSON.stringify(allTasks));
     });
 });
