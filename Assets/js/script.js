@@ -16,13 +16,13 @@ $(document).ready(function() {
     $(".input-block").each(function() {
         var hour = parseInt($(this).prev().attr("data-hour"));
 
-        if (hour === currentTime) {
-            $(this).addClass("present");
-        } else if (hour < currentTime) {
+        if (hour < currentTime) {
             $(this).addClass("past");
-        } else {
+        } else if (hour > currentTime) {
             $(this).addClass("future");
-        }    
+        } else {
+            $(this).addClass("present");
+        }
     });
 
     //Save task on save button click
