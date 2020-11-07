@@ -31,12 +31,21 @@ $(document).ready(function() {
         var hour = $(this).prev().prev().attr("data-hour");
         var inputValue = $(this).prev().val().trim();
 
-        if(inputValue === "") {
-            return;
-        }
-
         //Fetch existing record if user already entered something for that time 
         var taskExists = allTasks.find((t) => t.time === hour);
+
+        if(inputValue === "") {
+
+            //check if task exists
+            if(taskExists) {
+                //filter out the empty task
+                allTasks = allTasks.filter((t) => t.time !== hour);
+
+                //Now assign allTasks to localstorage object
+                localStorage.setItem("taskObject", JSON.stringify(allTasks));
+            }
+            return;
+        }
 
         //if yes update the existing one
         if(taskExists) {
