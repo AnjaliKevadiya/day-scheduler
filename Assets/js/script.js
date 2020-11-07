@@ -1,28 +1,21 @@
 $(document).ready(function() {
-    var todayDate = moment().format('MMMM Do YYYY');
-    console.log(todayDate);
+    var todayDate = moment().format('dddd, MMMM Do');
+    $("#currentDay").text(todayDate);
 
     var currentTime = moment().format('H');
-    console.log(currentTime)
 
-    var currentTime = $(this).attr("data-hour");
-    console.log(hour)
+    $(".input-block").each(function() {
+        var hour = parseInt($(this).prev().attr("data-hour"));
+        console.log(hour);
+        console.log(currentTime);
 
-    var timeBlocks = $(".input-block");
-    console.log(timeBlocks)
-    console.log(timeBlocks.length);
-
-    // currentTime = currentTime - 9;
-
-    for(var i=0; i < timeBlocks.length; i++) {
-        if (i === currentTime) {
-            timeBlocks[i].attr("class", "present");
-        } 
-        else if (i < currentTime) {
-            timeBlocks[i].attr("class", "present");
+        if (hour === currentTime) {
+            $(this).addClass("present");
+        } else if (hour < currentTime) {
+            $(this).addClass("past");
         } else {
-            timeBlocks[i].attr("class", "future");
+            $(this).addClass("future");
         }    
-    }
+    });
 });
 
