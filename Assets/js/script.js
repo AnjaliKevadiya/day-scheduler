@@ -55,5 +55,15 @@ $(document).ready(function() {
         //push all the tasks to the local storage
         localStorage.setItem("taskObject", JSON.stringify(allTasks));
     });
+
+    //display all the task description if user already added before
+    //loop over all the task
+    allTasks.forEach(task => {
+
+        //sarch by the atribute name (div[data-hour=" + task.time +"])
+        //.next will get the next element 
+        //and set the value we get it from local storage
+        $("div[data-hour=" + task.time +"]").next().val(task.description);
+    });
 });
 
