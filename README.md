@@ -26,4 +26,10 @@ WHEN I refresh the page
 THEN the saved events persist
 ```
 
-## Mock-Up
+#### Check out my [Site](https://anjalikevadiya.github.io/day-scheduler/).
+
+---
+
+<img src="Assets/Images/day-planner.png" />
+
+---
